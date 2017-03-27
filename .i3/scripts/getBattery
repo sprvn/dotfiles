@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+charging=`acpi -a`
+charging=`echo $charging | awk '{print $3}'`
+
+if [ $charging = "on-line" ]; then
+    battery=`acpi -b`
+    battery=`echo $battery | awk '{print $4}'`
+
+    printf "%s Charging" $battery
+else
+    battery=`acpi -b`
+    battery=`echo $battery | awk '{print $4}'`
+    battery=`echo $battery | sed 's/,/\ /g'`
+
+    #battery=`echo $battery | awk -F'[: ]' '{print $1":"$2 " " $4}'`
+    
+    #printf "%s" $battery
+    echo $battery
+fi

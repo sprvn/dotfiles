@@ -1,0 +1,233 @@
+# Mod
+set $mod Mod1
+
+# San Francisco font: https://github.com/supermarin/YosemiteSanFranciscoFont
+font pango: System San Francisco Display 8
+
+# Thin borders
+hide_edge_borders both
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec gnome-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# Screen lock with background
+bindsym $mod+shift+x exec i3lock -i ~/Pictures/lockscreen.png
+#bindsym $mod+shift+x exec ~/.i3/scripts/screenLocker.sh 
+
+bindsym $mod+Shift+t exec thunar
+
+# Use rofi instead of dmenu
+bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+
+# Vim keys
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# Awesome Font: https://github.com/FortAwesome/Font-Awesome/releases
+# switch to workspace
+#bindsym $mod+1 workspace 1
+set $workspace1 "1 "
+set $workspace2 "2 "
+set $workspace3 "3 "
+set $workspace4 "4 "
+set $workspace5 "5 "
+set $workspace6 "6 "
+set $workspace7 "7 "
+set $workspace8 "8 "
+set $workspace9 "9 "
+set $workspace10 "10 "
+set $workspace11 "test"
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+bindsym $mod+x [urgent=latest] focus
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+ 
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+set $mode_launcher launcher
+bindsym $mod+o mode "$mode_launcher"
+
+mode "$mode_launcher" {
+    bindsym f exec firefox, mode "default"
+    bindsym t exec thunar, mode "default"
+    bindsym k exec keepassx2, mode "default"
+
+    bindsym Esc mode "default"
+    bindsym Return mode "default"
+}
+
+set $power_mode power
+bindsym $mod+Shift+s mode "$power_mode"
+
+mode "$power_mode" {
+    bindsym p exec systemctl poweroff
+    bindsym r exec systemctl reboot
+    bindsym l exec i3lock -i ~/Pictures/lockscreen.png, mode "default"
+    bindsym s exec i3lock -i ~/Pictures/lockscreen.png, exec systemctl suspend, mode "default"
+
+    bindsym Esc mode "default"
+    bindsym Return mode "default"
+}
+
+
+# Colors use throughout i3
+set $bg-color            #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+set $selected-bg-color   #ECECEC
+
+# window colors
+#                       border              background         text                 indicator
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+# bar
+bar {
+        status_command i3blocks -c ~/.i3/i3blocks.conf
+        #tray_output none
+        colors {
+                background $bg-color
+                separator #757575
+                #                  border             background         text
+                focused_workspace  $selected-bg-color $selected-bg-color $bg-color
+                inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+                urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+        }
+}
+
+# floating
+#for_window [class="Skype"] floating enable
+for_window [Title="KeePassX"] floating enable
+for_window [Title="KeePassX"] resize set 800 600
+assign [Title="KeePassX"] $workspace9
+for_window [Title="KeePassX"] move to workspace $workspace9
+
+for_window [window_role="pop-up"] floating enable
+
+assign [class="Firefox"] $workspace1
+for_window [class="Firefox"] move to workspace $workspace1
+# default workspaces
+# assign [class="Spotify"] $workspace10
+# for_window [class="Spotify"] move to workspace $workspace10
+# assign [class="Skype"] $workspace9
+
+#bindsym $mod+Shift+s exec i3lock -i ~/Pictures/lockscreen.png && systemctl suspend
+
+# startup
+exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
+# exec --no-startup-id spotify
+# exec --no-startup-id skype
+exec --no-startup-id compton -f
+exec --no-startup-id nm-applet
+
+
+#i3-gaps
+for_window [class="^.*"] border pixel 0
+gaps inner 10
+
+
+ # key-bindings
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 3 +5% #increase sound
+bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -q sset Master 5%-
+bindsym XF86AudioMute exec amixer -q sset Master toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
