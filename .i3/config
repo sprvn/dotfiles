@@ -220,9 +220,9 @@ gaps inner 10
 
  # key-bindings
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 3 +5% #increase sound
-bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+
-bindsym XF86AudioLowerVolume exec amixer -q sset Master 5%-
-bindsym XF86AudioMute exec amixer -q sset Master toggle
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioMute exec pamixer -t
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
