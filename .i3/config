@@ -231,3 +231,5 @@ bindsym XF86AudioPrev exec playerctl previous
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+bindsym $mod+Tab exec i3-msg move workspace to output right

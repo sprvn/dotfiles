@@ -1,0 +1,105 @@
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "floating": "auto_off",
+            "layout": "splith",
+            "percent": 0.5,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "pixel",
+                    "current_border_width": 0,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 410,
+                       "width": 642,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "name": "kevgus@kal-pckevgus001:~",
+                    "percent": 1,
+                    "swallows": [
+                       {
+                       "window_role": "^34$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 410,
+               "width": 642,
+               "x": 0,
+               "y": 0
+            },
+            "name": "kevgus@kal-pckevgus001:~",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "window_role": "^33$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 410,
+               "width": 642,
+               "x": 0,
+               "y": 0
+            },
+            "name": "kevgus@kal-pckevgus001:~",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "window_role": "^32$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 410,
+               "width": 642,
+               "x": 0,
+               "y": 0
+            },
+            "name": "kevgus@kal-pckevgus001:~",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "window_role": "^31$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
