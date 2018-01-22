@@ -175,7 +175,8 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # bar
 bar {
-        status_command i3blocks -c ~/.i3/i3blocks.conf
+        #status_command i3blocks -c ~/.i3/i3blocks.conf
+        status_command py3status -c ~/.i3/i3status.conf
         #tray_output none
         tray_output eDP-1
         colors {
