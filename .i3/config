@@ -71,10 +71,14 @@ bindsym $mod+a focus parent
 # switch to workspace
 #bindsym $mod+1 workspace 1
 set $workspace1 "1 "
-set $workspace2 "2 "
-set $workspace3 "3 "
-set $workspace4 "4 "
-set $workspace5 "5 "
+set $workspace2 "2 "
+#set $workspace2 "2 "
+set $workspace3 "3 "
+set $workspace4 "4 "
+#set $workspace3 "3 "
+#set $workspace4 "4 "
+set $workspace5 "5 "
+#set $workspace5 "5 "
 set $workspace6 "6 "
 set $workspace7 "7 "
 set $workspace8 "8 "
@@ -157,6 +161,16 @@ mode "$power_mode" {
     bindsym Return mode "default"
 }
 
+set $monitor_mode monitor
+bindsym $mod+Shift+m mode "$monitor_mode"
+
+mode "$monitor_mode" {
+    bindsym e exec /bin/bash /home/kevgus/.i3/scripts/office-monitors-enable.sh
+    bindsym d exec /bin/bash /home/kevgus/.i3/scripts/office-monitors-disable.sh
+
+    bindsym Esc mode "default"
+    bindsym Return mode "default"
+ }
 
 # Colors use throughout i3
 set $bg-color            #2f343f
@@ -175,7 +189,8 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # bar
 bar {
-        status_command i3blocks -c ~/.i3/i3blocks.conf
+        #status_command i3blocks -c ~/.i3/i3blocks.conf
+        status_command py3status -c ~/.i3/i3status.conf
         #tray_output none
         tray_output eDP-1
         colors {
@@ -200,8 +215,8 @@ for_window [window_role="pop-up"] floating enable
 #assign [class="Firefox"] $workspace1
 #for_window [class="Firefox"] move to workspace $workspace1
 # default workspaces
-# assign [class="Spotify"] $workspace10
-# for_window [class="Spotify"] move to workspace $workspace10
+assign [class="Spotify"] $workspace10
+for_window [class="Spotify"] move to workspace $workspace10
 # assign [class="Skype"] $workspace9
 
 #bindsym $mod+Shift+s exec i3lock -i ~/Pictures/lockscreen.png && systemctl suspend
