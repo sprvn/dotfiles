@@ -1,0 +1,9 @@
+#!/bin/bash
+
+status=`sudo ufw status | awk '{ print $2 }'`
+if [ "$status" == "active" ]; then
+    echo "Active"
+else
+    echo "Inactive"
+    echo "#ff002b"
+fi

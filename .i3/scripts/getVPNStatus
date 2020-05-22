@@ -1,0 +1,10 @@
+#!/bin/bash
+
+status=`curl https://am.i.mullvad.net/connected 2> /dev/null | grep not`
+
+if [ "$?" == "1" ]; then
+    echo "Connected"
+else
+    echo "Disconnected"
+    echo "#ff002b"
+fi
