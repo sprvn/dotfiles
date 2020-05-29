@@ -1,6 +1,6 @@
 #!/bin/bash
 
-status=`sudo ufw status | awk '{ print $2 }'`
+status=`sudo ufw status | awk '{ print $2 }' | head -1`
 if [ "$status" == "active" ]; then
     echo "Active"
 else
